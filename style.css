@@ -1,0 +1,64 @@
+td {
+    text-align: center;
+    font-size: 20px;
+    width: 100px;
+    height: 20px;
+    border: 1px solid #FFFFFF;
+}
+h1 {
+    text-align: left;
+    color: #FFFFFF;
+    font-size: 48px;
+    margin-left: 20px;
+}
+h2 {
+    text-align: left;
+    color: #D3D3D3; /* Оставлю серый для других страниц */
+    margin-left: 20px;
+}
+p {
+    text-align: justify;
+    font-size: 23px;
+    color: #FFFFFF;
+}
+a {
+    color: #FFFFFF;
+    user-select: none;
+    text-decoration: none;
+    padding: 10px;
+}
+a:active {
+    color: #FFD700;
+}
+a:hover {
+    color: #FF4500;
+}
+body {
+    background-color: #1C2526;
+}
+/* Специальный стиль для "Ключевые альбомы" на about.html */
+h2.key-albums {
+    color: #FFFFFF; /* Белый цвет */
+    font-size: 36px; /* Увеличенный размер */
+}
+/* Стиль для галереи альбомов */
+.album-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin: 20px;
+}
+.album-gallery div {
+    width: 22%;
+    text-align: center;
+    margin: 10px;
+}
+.album-gallery img {
+    width: 200px;
+    height: 200px;
+}
+.album-gallery a {
+    display: block;
+    margin-top: 5px;
+    font-size: 18px;
+}

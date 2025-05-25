@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Pink Floyd - Обратная связь</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Pink Floyd</h1>
+    <hr>
+    <table>
+        <tr>
+            <td><a href="website.html">Главная</a></td>
+            <td><a href="about.html">Дискография</a></td>
+            <td><a href="feedback.html">Обратная связь</a></td>
+        </tr>
+    </table>
+    <h2>Обратная связь</h2>
+    <form id="contactForm">
+        <p>
+            <label for="name">Имя:</label><br>
+            <input type="text" id="name" name="name"><br>
+            <span id="nameError" style="color: #ff5555; display: none;">Пожалуйста, введите ваше имя.</span>
+        </p>
+        <p>
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email"><br>
+            <span id="emailError" style="color: #ff5555; display: none;">Пожалуйста, введите корректный email.</span>
+        </p>
+        <p>
+            <label for="comment">Комментарий:</label><br>
+            <textarea id="comment" name="comment" rows="4" cols="50"></textarea><br>
+            <span id="commentError" style="color: #ff5555; display: none;">Пожалуйста, введите ваш комментарий.</span>
+        </p>
+        <p>
+            <button type="submit">Отправить</button>
+        </p>
+    </form>
+    <p id="result" style="color: #55ff55; display: none;"></p>
+
+    <script>
+        const form = document.getElementById('contactForm');
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const commentInput = document.getElementById('comment');
+        const result = document.getElementById('result');
+
+        const nameError = document.getElementById('nameError');
+        const emailError = document.getElementById('emailError');
+        const commentError = document.getElementById('commentError');
+
+        // Email validation regex
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            // Reset error messages
+            nameError.style.display = 'none';
+            emailError.style.display = 'none';
+            commentError.style.display = 'none';
+            result.style.display = 'none';
+
+            let hasError = false;
+
+            // Validate name
+            if (!nameInput.value.trim()) {
+                nameError.style.display = 'block';
+                hasError = true;
+            }
+
+            // Validate email
+            if (!emailInput.value.trim()) {
+                emailError.textContent = 'Пожалуйста, введите ваш email.';
+                emailError.style.display = 'block';
+                hasError = true;
+            } else if (!emailRegex.test(emailInput.value.trim())) {
+                emailError.textContent = 'Пожалуйста, введите корректный email.';
+                emailError.style.display = 'block';
+                hasError = true;
+            }
+
+            // Validate comment
+            if (!commentInput.value.trim()) {
+                commentError.style.display = 'block';
+                hasError = true;
+            }
+
+            // If no errors, show success message
+            if (!hasError) {
+                result.textContent = `Спасибо, ${nameInput.value.trim()}! Ваш комментарий: "${commentInput.value.trim()}" получен. Мы свяжемся с вами по ${emailInput.value.trim()} скоро!`;
+                result.style.display = 'block';
+                form.reset();
+            }
+        });
+    </script>
+</body>
+</html>
